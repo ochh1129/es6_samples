@@ -75,4 +75,30 @@ crypto.getRandomValues(new Uint32Array(10)).join('');
 
 ---
 
-# 
+# String.prototype.search()
+[참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/search)
+
+---
+
+# String.prototype.includes()
+[참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+
+---
+
+# RegExp.prototype.test()
+[참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
+
+# Number.prototype.toFixed()
+[참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
+
+# Number.prototype.toPrecision()
+[참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision)
+
+# shuffle 알고리즘
+ - [피셔 예이츠 알고리즘 사용](https://daheenallwhite.github.io/programming/algorithm/2019/06/27/Shuffle-Algorithm-Fisher-Yates/)
+
+# Object.freeze()
+[참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+
+# Object.isFrozen()
+[참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen)

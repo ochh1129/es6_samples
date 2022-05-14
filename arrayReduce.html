@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const array = [100, 200, 300];
+
+        const sum = array.reduce((prev, cur) => {
+            return prev +  cur
+        });
+
+        console.warn(sum);
+
+        const twoDimensionArray = [['C1C1C', 'B1B1B', 'A1A1A'], ['C2C2C', 'B2B2B', 'A2A2A']];
+
+        const concatedArray = twoDimensionArray.reduce((prev, cur) => {
+            return prev.concat(cur)
+        });
+
+        console.warn(concatedArray);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
