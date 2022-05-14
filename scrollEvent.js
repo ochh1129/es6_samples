@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
             const pageYSize = window.innerHeight;
             const target = event.target;
 
-            window.scrollTo(0, target.offsetTop - (scrollHeight - window.innerHeight));
+            window.scrollTo(0, target.offsetTop - (scrollHeight - pageYSize));
         });
     });
 });
