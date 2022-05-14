@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="fullScreen.js" defer></script>
+    <link rel="stylesheet" href="defualt.css">
+    <style>
+        :root {
+            --divWidth : 100px;
+            --divHeight : 100px;
+        }
+
+        .full {
+            width: var(--divWidth);
+            height: var(--divHeight);
+            top: calc(50% - calc(var(--divWidth) / 2));
+            left: calc(50% - calc(var(--divHeight) / 2));
+            background-color: thistle;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="full">
+        Double click to toggle Full Screen
+    </div>
+</body>
+</html>
