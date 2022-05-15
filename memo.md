@@ -279,3 +279,65 @@ boxes.forEach((box) => {
     ...
 });
 
+---
+
+# Node 관련
+[속성 / 의미 / 타입]
+부모노드.children : 자식 노드 / 요소군(HTMLCollection)
+부모노드.firstElementChild : 첫 번쨰 자식 노드 / 요소(Element)
+부모노드.lastElementChild : 마지막 자식 노드 / 요소(Element)
+부모노드.nextElementSibling : 다음 노드 / 요소(Element)
+부모노드.previousElementSibling : 이전 노드 / 요소(Element)
+자식노드.ParentNode : 부모 노드 / 노드(Node)
+
+[메소드 / 의미 / 반환]
+부모노드.appendChild(자식노드) : 부모 노드에 자식 노드 추가 / 요소(Element)
+부모노드.insertBefore(자식노드, 희망위치의 노드) : 부모 노드 내 노드 추가 / 요소(Element)
+
+노드1.before(노드2) : 노드 1 앞에 노드 2 추가 / 반환 없음
+노드1.after(노드2) : 노드 1 뒤에 노드 2 추가 / 반환 없음
+부모노드.hasChild(자식노드) / 부모 노드에 자식 노드 존재 여부 확인 / true, false
+
+부모요소.insertAdjacentHTML(삽입위치, 문자열) / 문자열을 HTML로 삽입 / 요소(Element)
+ - 'beforebegin' : 부모 요소 바로 앞
+ - 'afterbegin' : 부모 요소 제일 앞
+ - 'beforeend' : 부모 요소 제일 뒤
+ - 'afterend' : 부모 요소 바로 뒤
+
+insertAdjacentElement()도 유사함
+
+부모노드.removeChild(자식노드) / 부모 요소에서 자식 요소 제거 / 제거한 요소(Element)
+
+노드.remove() / 요소를 제거 / 반환 없음
+
+---
+
+# noopener, noreferrer
+anchor tag(<a>)에서 부모 창 접근이 불가능하도록 제어
+[참조](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener)
+[참조](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noreferrer)
+
+---
+
+# getComputedStyle
+최종적으로 계싼한 스타일 값 반환
+ex) getComputedStyle(element).width;
+
+---
+
+# input event(input vs change)
+ - 'input' : input 요소 키 입력 시 이벤트
+    > 사용자의 인터페이스에 의해 요소의 텍스트 내용을 변경할 때 발생
+ - 'change' : input 요소 변경 시 이벤트
+    > 요소의 내용을 변경했을 떄 발생
+
+input 이벤트는 키 입력 발생과 함께 발생하지만 change 이벤트를 enter키 혹은 포커스가 벗어났을 때 발생
+
+[참고](https://stackoverflow.com/questions/17047497/difference-between-change-and-input-event-for-an-input-element)
+
+---
+
+# text area 값
+ - text area.value
+
+---
