@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <input type="range" class="range" min="0" max="100" value="50">
+    <script>
+        const element = document.querySelector('.range');
+
+        // element.addEventListener('input', handleChange);
+        element.addEventListener('change', handleChange);
+
+        function handleChange(event) {
+            const target = event.target;
+console.warn(target.value);
+        }
+    </script>
+</body>
+</html>
