@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+    <style>
+        .rect {
+            width: 200px;
+            height: 200px;
+            display: block;
+            position: absolute;
+            background-color: blue;
+            top: 100px;
+            
+            transition: all 0.5s;
+        }
+        .rect.state-show {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="target rect"></div>
+    <button>Transition</button>
+    <script>
+        const button = document.querySelector('button');
+
+        button.addEventListener('click', handleClick);
+
+        function handleClick() {
+            const target = document.querySelector('.target');
+
+            const addClassName = 'state-show';
+
+            if (target.classList.contains(addClassName) === false) {
+                target.classList.add(addClassName);
+            }
+            else {
+                target.classList.remove(addClassName);
+            }
+        }
+
+        const element = document.querySelector('.rect');
+
+        element.addEventListener('transitionend', (event) => {
+console.warn("Transition-End");
+        });
+    </script>
+</body>
+</html>

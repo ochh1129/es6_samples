@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+    <style>
+        .rect {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect"></div>
+    <script>
+        const element = document.querySelector('.rect');
+
+        element.animate(
+            {
+                filter: [
+                    'grayscale(0%)',
+                    'grayscale(100%)'
+                ]
+            },
+            {
+                duration: 500,
+                fill: 'forwards',
+                easing: 'ease'
+            }
+        );
+    </script>
+</body>
+</html>

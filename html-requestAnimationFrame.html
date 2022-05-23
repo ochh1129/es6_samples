@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+    <style>
+        .follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            will-change: transform;
+            font-size: 5rem;
+            background-color: blueviolet;
+            width: 5px;
+            height: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="follower"></div>
+    <script>
+        const followerEl = document.querySelector('.follower');
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let currentX = 0;
+        let currentY = 0;
+
+        document.body.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        });
+
+        tick();
+
+        function tick() {
+            requestAnimationFrame(tick);
+
+            currentX += (mouseX - currentX) * 0.1;
+            currentY += (mouseY - currentY) * 0.1;
+
+            followerEl.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        }
+    </script>
+</body>
+</html>
