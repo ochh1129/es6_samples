@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <!-- <div>
+        <audio id='track1' controls preload="metadata" src="assets/music.mp3"></audio>
+    </div> -->
+    <div>
+        <button onclick='loadAndPlay()'>play</button>
+        <button onclick='stop()'>pause</button>
+    </div>
+    <script>
+        loadAndPlay();
+
+        let source;
+
+        async function loadAndPlay() {
+            const context = new AudioContext();
+
+            const audio = await fetch('assets/music.mp3');
+
+            const buffer = await data.arrayBuffer();
+
+            const decodedBuffer = await context.decodeAudioData(buffer);
+
+            source = context.createBufferSource();
+
+            source.buffer = decodedBuffer;
+
+            source.connet(context.destination);
+
+            source.start(0);
+        }
+
+        function stop() {
+            source.stop();
+        }
+    </script>
+</body>
+</html>

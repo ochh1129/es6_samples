@@ -342,3 +342,8 @@ input 이벤트는 키 입력 발생과 함께 발생하지만 change 이벤트�
 
 ---
 
+# ima Tag
+ - src에 값이 들어가면 네트워크 통신을 호출하므로 지연 로딩 시 src를 대체할 필요가 있음
+    > ex) data-src에 image 경로 저장 후 DOMContentLoaded 시 image 태그들의 data-src를 별도의 Map으로 저장 후 클릭 이벤트 발생 시 별도의 Map으로 저장한 data-src를 해당 img의 src에 대입
+ - src에는 base64로 인코딩한 이미지 스트링 사용 가능
+    > 포맷은 jpeg, png 한정

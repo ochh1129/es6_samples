@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <div>
+        <video id='movie1' preload="metadata" controls src="assets/video.mp4" poster="assets/videoposter.jpg"></video>
+    </div>
+    <div>
+        <button id='btnPlay'>play</button>
+        <button id='btnPause'>pause</button>
+    </div>
+    <script>
+        const video = document.querySelector('#movie1');
+
+        const playEl = document.querySelector('#btnPlay');
+        const pauseEl = document.querySelector('#btnPause');
+
+        playEl.addEventListener('click', () => {
+            video.play();
+        });
+
+        pauseEl.addEventListener('click', () => {
+            video.pause();
+        });
+    </script>
+</body>
+</html>

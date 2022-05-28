@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <div>
+        <audio id='track1' controls preload="metadata" src="assets/music.mp3"></audio>
+    </div>
+    <div>
+        <button id='btnPlay'>play</button>
+        <button id='btnPause'>pause</button>
+    </div>
+    <script>
+        const audio = document.querySelector('#track1');
+
+        const playEl = document.querySelector('#btnPlay');
+        const pauseEl = document.querySelector('#btnPause');
+
+        playEl.addEventListener('click', () => {
+            audio.play();
+        });
+
+        pauseEl.addEventListener('click', () => {
+            audio.pause();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" data-src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png'/>
+    <button class="btn">Load</button>
+    <script>
+        const imageEl = document.querySelector('#logo');
+        let imageSrc = '';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            imageSrc = imageEl.dataset.src;
+console.warn('imageSrc', imageSrc);
+        });
+
+        const btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', () => {
+            imageEl.src = imageSrc;
+        });
+    </script>
+</body>
+</html>
