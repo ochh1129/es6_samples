@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <canvas id="canvasBox"
+        width="100"
+        height="100">
+    </canvas>
+    <p class="log"></p>
+    <script>
+        const canvas = document.querySelector('#canvasBox');
+
+        const context = canvas.getContext('2d');
+
+        const img = new Image();
+
+        img.onload = () => {
+            context.drawImage(img, 0, 0);
+        };
+
+        img.src = 'assets/videoposter.jpg';
+
+        canvas.addEventListener('mousemove', (event) => {
+            const x = event.layerX;
+            const y = event.layerY;
+
+            const imageData = context.getImageData(x, y, 1, 1);
+            const data = imageData.data;
+            const r = data[0];
+            const g = data[1];
+            const b = data[2];
+            const a = data[3];
+
+            const color = `rgba(${r}, ${g}, ${b}, ${a})`;
+
+            const el = document.querySelector('.log');
+
+            el.style.background = color;
+            el.textContext = color;
+        });
+    </script>
+</body>
+</html>

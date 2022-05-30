@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <script>
+        const arrFunc = [];
+        for (let i = 0; i < 5; i++) {
+            const func = (resolve) => {
+console.log(`${i} : start`, new Date().toLocaleTimeString());
+                const delayMsec = 2000 * Math.random();
+
+                setTimeout(() => {
+console.log(`${i} : start`, new Date().toLocaleTimeString());
+                    resolve();
+                }, delayMsec);
+            };
+
+            arrFunc.push(func);
+        }
+console.log(arrFunc);
+
+        const arrPromise = arrFunc.map((func) => new Promise(func));
+console.log(arrPromise);
+        Promise.all(arrPromise).then(() => {
+console.warn('all done');
+        });
+    </script>
+</body>
+</html>

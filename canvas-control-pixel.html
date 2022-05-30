@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <canvas id="canvasBox"
+        width="100"
+        height="100">
+    </canvas>
+    <script>
+        const canvas = document.querySelector('#canvasBox');
+
+        const context = canvas.getContext('2d');
+
+        const img = new Image();
+
+        img.onload = () => {
+            context.drawImage(img, 0, 0);
+
+            const imageData = context.getImageData(0, 0, 100, 100);
+console.log(imageData.data);
+console.table(imageData.data);
+        };
+
+        img.src = 'assets/videoposter.jpg';
+    </script>
+</body>
+</html>

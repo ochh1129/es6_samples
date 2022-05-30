@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <canvas id="canvasBox"
+        width="150"
+        height="150">
+    </canvas>
+    <canvas id="canvasClone"
+        width="150"
+        height="150">
+    </canvas>
+    <button id="btnSave">Download</button>
+    <script>
+        const canvas = document.querySelector('#canvasBox');
+
+        const context = canvas.getContext('2d');
+
+        const img = new Image();
+
+        img.onload = () => {
+            context.drawImage(img, 0, 0);
+
+            const imageData = context.getImageData(0, 0, 150, 150);
+            const data = imageData.data;
+
+            const monoImageData = new ImageData(150, 150);
+            const monoArr = monoImageData.data;
+
+            for (let i = 0; i < data.length / 4; i++) {
+                const r = data[i * 4 + 0];
+                const g = data[i * 4 + 1];
+                const b = data[i * 4 + 2];
+                const a = data[i * 4 + 3];
+
+                const color = (r + g + b) / 3;
+
+                monoArr[i * 4 + 0] = color;
+                monoArr[i * 4 + 1] = color;
+                monoArr[i * 4 + 2] = color;
+                monoArr[i * 4 + 3] = a;
+            }
+
+            const canvasClone = document.querySelector('#canvasClone');
+            const cloneContext = canvasClone.getContext('2d');
+
+            cloneContext.putImageData(monoImageData, 0, 0);
+        };
+
+        img.src = 'assets/videoposter.jpg';
+
+        document.querySelector('#btnSave').addEventListener('click', saveFile);
+
+        function saveFile() {
+            const canvasClone = document.querySelector('#canvasClone');
+            const mimeType = 'image/png';
+            const fileName = 'download.png';
+
+            const base64 = canvasClone.toDataURL(mimeType);
+            const bin = atob(base64.replace(/^.*,/, ''));
+            const buffer = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) {
+                buffer[i] = bin.charCodeAt(i);
+            }
+
+            const blob = new Blob([buffer.buffer], {type: mimeType});
+
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(blob, fileName);
+            }
+            else if (window.URL && window.URL.createObjectURL) {
+                const a = document.createElement('a');
+
+                a.download = fileName;
+                a.href = window.URL.createObjectURL(blob);
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            else {
+                window.open(dataUrl, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>

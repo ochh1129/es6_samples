@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <canvas id="canvasBox"
+        width="150"
+        height="150">
+    </canvas>
+    <br>
+    <img id="imageBox">
+    <script>
+        const canvas = document.querySelector('#canvasBox');
+
+        const context = canvas.getContext('2d');
+
+        context.fillStyle = 'red';
+        context.fillRect(0, 0, 100, 100);
+        context.fillStyle = 'green';
+        context.fillRect(25, 25, 50, 50);
+
+        const data = canvas.toDataURL();
+        console.log(data);
+
+        const img = document.querySelector('#imageBox');
+        img.src = data;
+    </script>
+</body>
+</html>

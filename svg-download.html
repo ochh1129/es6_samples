@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200" width="200" height="200"
+        id="svgBox">
+        <circle id="svgCircle"
+                cx="100" cy="100"
+                r="100"
+                fill="#FFFF8D"
+            />
+    </svg>
+    <button id="btnSave">Download</button>
+    <script>
+        document.querySelector('#btnSave').addEventListener('click', saveFile);
+
+        function saveFile() {
+            const fileName = `mySvg.svg`;
+
+            const content = document.querySelector('#svgBox').outerHTML;
+
+            const dataUrl = 'data:image/svg+xml,\n' + encodeURIComponent(content);
+
+            const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
+            const blob = new Blob([bom, content], {type: 'text/plain'});
+
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(blob, fileName);
+            }
+            else if (window.URL && window.URL.createObjectURL) {
+                const a = document.createElement('a');
+
+                a.download = fileName;
+                a.href = window.URL.createObjectURL(blob);
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            else {
+                window.open(dataUrl, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>

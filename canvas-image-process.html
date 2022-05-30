@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <canvas id="canvasBox"
+        width="150"
+        height="150">
+    </canvas>
+    <canvas id="canvasClone"
+        width="150"
+        height="150">
+    </canvas>
+    <script>
+        const canvas = document.querySelector('#canvasBox');
+
+        const context = canvas.getContext('2d');
+
+        const img = new Image();
+
+        img.onload = () => {
+            context.drawImage(img, 0, 0);
+
+            const imageData = context.getImageData(0, 0, 150, 150);
+            const data = imageData.data;
+
+            const monoImageData = new ImageData(150, 150);
+            const monoArr = monoImageData.data;
+
+            for (let i = 0; i < data.length / 4; i++) {
+                const r = data[i * 4 + 0];
+                const g = data[i * 4 + 1];
+                const b = data[i * 4 + 2];
+                const a = data[i * 4 + 3];
+
+                const color = (r + g + b) / 3;
+
+                monoArr[i * 4 + 0] = color;
+                monoArr[i * 4 + 1] = color;
+                monoArr[i * 4 + 2] = color;
+                monoArr[i * 4 + 3] = a;
+            }
+
+            const canvasClone = document.querySelector('#canvasClone');
+            const cloneContext = canvasClone.getContext('2d');
+
+            cloneContext.putImageData(monoImageData, 0, 0);
+        };
+
+        img.src = 'assets/videoposter.jpg';
+    </script>
+</body>
+</html>

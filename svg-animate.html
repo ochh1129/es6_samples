@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200" width="200" height="200"
+        id="svgBox">
+        <circle id="svgCircle"
+                cx="100" cy="100"
+                r="95"
+                fill="#BBDEFB"
+            />
+    </svg>
+    <script>
+        const svgCircle = document.querySelector('#svgCircle');
+
+        let time = 0;
+
+        animate();
+
+        function animate() {
+            // time += 0.1;
+            time += 0.5;
+
+            svgCircle.style.fill = `hsl(0, 100%, ${time}%)`;
+
+            if (time < 50) {
+                requestAnimationFrame(animate);
+            }
+        }
+        </script>
+</body>
+</html>

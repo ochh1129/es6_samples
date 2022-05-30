@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <script>
+//         Promise.resolve()
+//         .then(
+//             () => new Promise((resolve) => {
+//             setTimeout(() => {
+// console.log('first Promise', new Date().toLocaleTimeString());
+//                 resolve();
+//                 }, 1000);
+//             })
+//         )
+//         .then(
+//             () => new Promise((resolve) => {
+//                 setTimeout(() => {
+// console.log('first Promise', new Date().toLocaleTimeString());
+//                 resolve();
+//                 }, 1000);
+//             })
+//         );
+        start();
+
+        async function start() {
+            await new Promise((resolve) => {
+                setTimeout(() => {
+console.log('first Promise', new Date().toLocaleTimeString());
+                resolve();
+                }, 1000);
+            })
+
+            await new Promise((resolve) => {
+                setTimeout(() => {
+console.log('second Promise', new Date().toLocaleTimeString());
+                resolve();
+                }, 1000);
+            })
+        }
+    </script>
+</body>
+</html>
