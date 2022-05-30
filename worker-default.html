@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <div class="wrap">
+        <input type="number" value="1" id="numA" /> +
+        <input type="number" value="2" id="numB" /> =
+        <span class="result"></span>
+    </div>
+    <button>calc</button>
+    <script>
+        const numA = document.querySelector('#numA');
+        const numB = document.querySelector('#numB');
+        const result = document.querySelector('.result');
+        const btn = document.querySelector('button');
+
+        const worker = new Worker('worker-default.js');
+
+        btn.addEventListener('click', () => {
+            worker.postMessage([Number(numA.value), Number(numB.value)]);
+console.log('send to worker');
+        })
+
+        worker.onmessage = function(e) {
+            result.textContext = e.data;
+console.log('get message from worker');
+        }
+    </script>
+</body>
+</html>

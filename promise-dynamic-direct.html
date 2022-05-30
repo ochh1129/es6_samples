@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+</head>
+<body>
+    <script>
+        const listFunctions = [];
+
+        for (let i = 0; i < 5; i++) {
+            const func = (resolve) => {
+                setTimeout(() => {
+console.log(`${i} complete`, new Date().toLocaleTimeString());
+                    resolve();
+                }, 1000);
+            };
+
+            listFunctions.push(func);
+        }
+
+console.log(listFunctions);
+
+        execute();
+
+        async function execute() {
+            for (let i = 0; i < listFunctions.length; i++) {
+                const func = listFunctions[i];
+                await new Promise(func);
+            }
+        }
+    </script>
+</body>
+</html>

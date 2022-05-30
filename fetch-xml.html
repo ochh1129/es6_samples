@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+    <script>
+        // fetch('assets/sample.xml')
+        // .then((response) => response.text())
+        // .then((str) => new DOMParser().parseFromString(str, 'application/xml'))
+        // .then((xml) => {
+        //     console.log(xml);
+        //     console.log(xml.querySelector('orange').innerHTML);
+        // });
+        async function load() {
+            const response = await fetch('assets/sample.xml');
+            const text = await response.text();
+            const xml = new DOMParser().parseFromString(text, 'application/xml');
+            console.log(xml);
+        }
+
+        load();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

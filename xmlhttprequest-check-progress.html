@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="defualt.css">
+    <style>
+        .progress {
+            position: relative;
+            width: 600px;
+            height: 20px;
+            border-radius: 10px;
+            background: gray;
+            overflow: hidden;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .progress-bar {
+            position: absolute;
+            background: orangered;
+            content: '';
+            height: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+    <script>
+        const req = new XMLHttpRequest();
+
+        req.responseType = 'blob';
+
+        req.addEventListener('progress', (event) => {
+            const rate = event.loaded / event.total;
+
+            const element = document.querySelector('.progress-bar');
+            element.style.width = `${rate * 100}%`;
+        });
+
+        req.addEventListener('load', (event) => {
+            const data = event.target.response;
+            const source = URL.createObjectURL(data);
+            const image = new Image();
+            image.src = source;
+        });
+
+        req.open('GET', 'assets/videoposter.jpg');
+        req.send();
+    </script>
+</body>
+</html>
